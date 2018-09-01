@@ -61,7 +61,7 @@ class Navigation extends React.Component {
                 >
                   <DropdownHeader className="dropdown-header">
                     <DropArea>
-                      <img src={props.imageSrc} />
+                      <img src={props.imageSrc} alt="Avatar" />
                     </DropArea>
                   </DropdownHeader>
                   <DropdownSection className="dropdown-section">
@@ -96,6 +96,9 @@ const WrapDiv = styled.div`
   font-size: 14px;
   color: #4a4a4a;
   width: 100%;
+  @media (max-width: 740px) {
+    margin-top: 0;
+  }
 `;
 
 const DropArea = styled.div`
@@ -113,140 +116,171 @@ const DropArea = styled.div`
 `;
 
 const DropDownDiv = styled.div`
+  position: absolute;
+  background-color: #ffffff;
+  width: 170px;
+  left: -85px;
+  margin-top: 5px;
+  border: 1px solid #e4e4e4;
+  border-radius: 6px;
+  box-shadow: 0 0 25px #e4e4e4;
+  &:before {
+    content: " ";
     position: absolute;
-    background-color: #FFFFFF;
-    width:170px;
-    left: -85px;
-    margin-top: 5px;
-    border: 1px solid #e4e4e4;
-    border-radius: 6px;
-    box-shadow: 0 0 25px #e4e4e4;
-    
-    &:before{
-        content: " ";
-        position: absolute;
-        top: -16px;
-        right: 22px;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 14px 16px 14px;
-        border-color: transparent transparent #ffffff transparent;
-        z-index: 3;
-    }
-    
-    &:after{
-        content: " ";
-        position: absolute;
-        top: -17px;
-        right: 22px;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 14px 16px 14px;
-        border-color: transparent transparent #e4e4e4 transparent;
-        
-    }              
-                  & > ul {
-                      margin: 0;
-                      padding: 0;
-                      list-style-type: none;
-                      display: flex;
-                      flex-flow: column;
-                      & > li {
-                          list-style-type: none;
-                          width: 100%;
-                          height: 50px;
-                          display: flex;
-                          justify-content: center;
-                          align-items: center;
-                          cursor: pointer;
+    top: -16px;
+    right: 22px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 14px 16px 14px;
+    border-color: transparent transparent #ffffff transparent;
+    z-index: 3;
+  }
 
-                          &:hover {
-                              background-color: #e4e4e4;
-                          }
-                          
-                          &:first-child{
-                              &:hover{
-                                  border-top-right-radius: 5px;
-                                  border-top-left-radius: 5px;
-                              }
-                          }
-                          &:last-child{
-                              &:hover{
-                                  border-bottom-right-radius: 5px;
-                                  border-bottom-left-radius: 5px;
-                              }
-                          }                          
-                      }
-                  }
-                  }`;
+  &:after {
+    content: " ";
+    position: absolute;
+    top: -17px;
+    right: 22px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 14px 16px 14px;
+    border-color: transparent transparent #e4e4e4 transparent;
+  }
+  & > ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-flow: column;
+    & > li {
+      list-style-type: none;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #e4e4e4;
+      }
+
+      &:first-child {
+        &:hover {
+          border-top-right-radius: 5px;
+          border-top-left-radius: 5px;
+        }
+      }
+      &:last-child {
+        &:hover {
+          border-bottom-right-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+      }
+    }
+  }
+`;
 
 const NavDiv = styled.div`
+  display: flex;
+  background-color: #f3f3f3;
+  box-shadow: 0 0 4px #e4e4e4;
+  flex-basis: 78%;
+  height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  & > div {
+    height: 100%;
     display: flex;
-    background-color: #F3F3F3;
-    box-shadow: 0 0 4px #e4e4e4;
-    flex-basis: 78%;
-    height: 76px;
     align-items: center;
-    justify-content: space-between;
-    
-    & > div {
-        height: 100%;
-        display: flex;
+
+    & > span {
+      margin-left: 25px;
+      font-size: 16px;
+    }
+
+    & > ul {
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+
+      & > li {
+        display: inline-flex;
         align-items: center;
-         
-         & > span {
-            margin-left: 25px;
-            font-size:16px;
-            }
-         
-         & > ul {
-            display: flex;
-            flex-direction: row;
-            list-style-type: none;
-         
-         & > li {
-            display: inline-flex;
-            align-items: center;
-            margin-right: 50px;
-            height: 76px;
-            justify-content: center;
-            text-transform: uppercase;
-            
-            &:last-child{ 
-                width: 100px;
-                margin: 0;
-                border-left: 1px solid #e4e4e4;
-                
-                &:hover {
-                     background-color: #e4e4e4 !important;
-                }
-                
-                & > div {
-                    position: relative;
-                }
-            }
-         
-         & > a {
-            display: inline-block;
-            text-decoration: none;
-            color: #4a4a4a;
-            text-align:center;
-            
-            &:after {
-                display: block;
-                content: attr(title);
-                font-weight: 700;
-                height: 0;
-                overflow: hidden;
-                visibility: hidden;
-            }
-            
-            &:hover {
-               color: #f26620;
-               font-weight: 700;
-            }
-         }
-    }  
+        margin-right: 50px;
+        height: 76px;
+        justify-content: center;
+        text-transform: uppercase;
+
+        &:last-child {
+          width: 100px;
+          margin: 0;
+          border-left: 1px solid #e4e4e4;
+
+          &:hover {
+            background-color: #e4e4e4 !important;
+          }
+
+          & > div {
+            position: relative;
+          }
+        }
+
+        & > a {
+          display: inline-block;
+          text-decoration: none;
+          color: #4a4a4a;
+          text-align: center;
+
+          &:after {
+            display: block;
+            content: attr(title);
+            font-weight: 700;
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
+          }
+
+          &:hover {
+            color: #f26620;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 740px) {
+    flex-basis: 100%;
+    flex-direction: column;
+    height: auto;
+    & > div {
+      height: auto;
+      & > span {
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      & > ul {
+        flex-direction: column-reverse;
+        justify-content: center;
+        padding: 0;
+        min-width: 375px;
+        & > li {
+          margin: 0;
+          &:last-child {
+            border-left: none;
+            border-bottom: 1px solid #e4e4e4;
+            align-self: center;
+          }
+          & > a {
+            height: 30px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 `;
