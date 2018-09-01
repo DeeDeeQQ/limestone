@@ -14,6 +14,9 @@ const App = props => (
           CompanyName="companyname"
           CompanyId="id"
           imageSrc="./images/image.jpg"
+          projectsCount="23"
+          notificationsCount="7"
+          tasksCount="15"
         />
       )}
     />

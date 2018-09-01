@@ -67,12 +67,36 @@ class Navigation extends React.Component {
                   <DropdownSection className="dropdown-section">
                     <DropDownDiv>
                       <ul>
-                        <li>My profile</li>
-                        <li>My projects</li>
-                        <li>notifications</li>
-                        <li>tasks</li>
-                        <li>help</li>
-                        <li>logout</li>
+                        <li>
+                          <Link to={`/profile:${props.CompanyId}`}>
+                            My profile
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to={`/projects:${props.CompanyId}`}>
+                            My projects
+                            {props.projectsCount && (
+                              <div>{props.projectsCount}</div>
+                            )}
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to={`/notifications:${props.CompanyId}`}>
+                            notifications
+                            {props.notificationsCount && (
+                              <div>{props.notificationsCount}</div>
+                            )}
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to={`/tasks:${props.CompanyId}`}>
+                            tasks
+                            {props.tasksCount && <div>{props.tasksCount}</div>}
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to={`/help`}>help</Link>
+                        </li>
                       </ul>
                     </DropDownDiv>
                   </DropdownSection>
@@ -118,8 +142,8 @@ const DropArea = styled.div`
 const DropDownDiv = styled.div`
   position: absolute;
   background-color: #ffffff;
-  width: 170px;
-  left: -85px;
+  width: 190px;
+  left: -105px;
   margin-top: 5px;
   border: 1px solid #e4e4e4;
   border-radius: 6px;
@@ -136,7 +160,6 @@ const DropDownDiv = styled.div`
     border-color: transparent transparent #ffffff transparent;
     z-index: 3;
   }
-
   &:after {
     content: " ";
     position: absolute;
@@ -162,7 +185,33 @@ const DropDownDiv = styled.div`
       justify-content: center;
       align-items: center;
       cursor: pointer;
-
+      & > a {
+        text-decoration: none;
+        color: black;
+        width: 100%;
+        margin: 0 25px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #e4e4e4;
+        &:hover {
+          border-bottom: 1px solid transparent;
+        }
+        & > div {
+          width: 20px;
+          height: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #f26620;
+          border-radius: 10px;
+          color: white;
+          font-size: 10px;
+          font-family: "Roboto", sans-serif;
+          font-weight: 900;
+        }
+      }
       &:hover {
         background-color: #e4e4e4;
       }
