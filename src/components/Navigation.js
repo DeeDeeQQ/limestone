@@ -208,7 +208,6 @@ const DropDownDiv = styled.div`
           border-radius: 10px;
           color: white;
           font-size: 10px;
-          font-family: "Roboto", sans-serif;
           font-weight: 900;
         }
       }
